@@ -1,26 +1,3 @@
-// import express from 'express';
-
-import { call } from "function-bind";
-
-// const router = express.Router();
-
-// // Define your routes here
-// router.get('/', (req, res) => {
-//     //res.cookie
-//     res.sendFile("C:\\Users\\nikol\\Desktop\\SCB\\Templates\\index.html");
-// });
-
-// router.get('/about', (req, res) => {
-//     res.coo
-//     res.send('This is the about page');
-// }); 
-
-// router.get('/contact', (req, res) => {
-//     res.send('This is the contact page');
-// }); 
-
-// export { router };
-
 //client side router
 
 class Router {

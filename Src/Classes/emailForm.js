@@ -1,43 +1,62 @@
 class emailForm{
-    constructor(scaffold,mountPoint) {
-        this.mountPoint = mountPoint;
+    constructor(scaffold) {
         this.scaffold = scaffold;
-        this.root = document.createElement('form');
-        this.Render();
-        this.Mount();
+        //bind handlers once (important for removeEventListener later)
+        this.handleClick = this.handleClick.bind(this);
+        //this.Render();
+        //this.Mount();
+        //without these id probably have to keep track of all the elements
+        //within the DOM that i created(possibly as an array)
+        //and invoke render for each
+        //praobably within index.js
     }
 
-    Render() {
+    init(){
+        //attach event listeners in here
+        //the thing is submit was created outside of here
+        //and the scope is not global,
+        //should i have submit be binded to the object
+        this.submit.addEventListener('click', (e) => {
+            //ideally you do not want to be calling a send email function
+            //from in here
+            //i think having the senEmail function here is fine
+            //even though it breaks SRP, simply because this is not
+            //too complex
+            this.createEmail();
+            this.sendEmail();
+        })
+    }
+
+    //gonna abstract this later
+    render() {
         Object.entries(this.scaffold).forEach(([key, value]) => {
-            const label = document.createElement('label');
-            label.textContent = key;
+            this.label = document.createElement('label');
+            this.label.textContent = key;
             if (value === "textarea"){
-                const textarea = document.createElement('textarea');
-                textarea.style.height = "200px";
-                textarea.name = key;
+                this.message = document.createElement('textarea');
+                this.message.style.height = "200px";
+                this.message.name = key;
                 this.root.appendChild(label);
                 this.root.appendChild(textarea);
             } else {
-                const input = document.createElement('input');
-                input.type = value;
-                input.name = key;
+                this.input = document.createElement('input');
+                this.input.type = value;
+                this.input.name = key;
                 this.root.appendChild(label);
                 this.root.appendChild(input);
             }
         });
-        const submit = document.createElement('button');
-        submit.textContent = "Submit";
-        submit.type = "submit";
-        submit.addEventListener('click', this.SendEmail);
+        this.root = document.createElement('form');
+        this.root.name = 'email-form';
+
+        this.submit = document.createElement('button');
+        this.submit.textContent = "Submit";
+        this.submit.type = "submit";
+
         this.root.appendChild(submit);
     }
 
-    Mount(){
-        this.mountPoint.appendChild(this.root);
-    }
-
-    //data will be an object with the form data
-    async SendEmail(data){
+    async sendEmail(data){
         return await fetch(('http://localhost:3000/send-email'), {
             method: 'POST',
             headers: {
@@ -53,10 +72,18 @@ class emailForm{
             })
         });
     }
+
+    createEmail(){
+        //this creates the email body etc
+        //should i create these into the dat object
+        //by running through the scaffold object
+        //and creating the key value pairs, based on name and the message
+        //within them?
+        const data = {
+            
+        }
+    }
 }
 
 export { emailForm };
 
-const getData = (element) => {
-
-};
