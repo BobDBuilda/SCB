@@ -1,60 +1,55 @@
+import gsap from "gsap";
 class Slideshow {
     constructor(images) {
         this.images = images;
-        this.currentIndex = 0;
-        this.speed = 3000; //default speed of 3 seconds
-        this.root = document.createElement('div');
-        this.root.style.display = 'flex';
-        this.root.style.width = '80%';
-        this.render();
-        this.mount();
+        this.currentSlide = 0;
+        this.speed = 3000;
+        this.track;
     }   
 
     render(){
-        this.images.forEach(src => {
-            const img = document.createElement('img');
-            img.className = 'slide';
-            img.src = src;
-            this.root.appendChild(img);
-        });
-        setInterval(() => {
-            //this.currentIndex = (this.currentIndex + 1) % this.images.length;
-            //this.root.style.transform = `translateX(-${this.currentIndex * 10}%)`;
-        }, this.speed);
-    }
+        this.root = document.createElement('div');
+        this.root.style.display = 'flex';
+        this.root.style.width = '80%';
+        this.root.dataset.name = 'slideshow';
+        this.track = document.createElement('div');
+        this.track.dataset.name = 'track';
+        this.root.appendChild(this.track);
 
-    mount(){
-        this.mountPoint.appendChild(this.root);
+        this.images.forEach(source => {
+            const image = document.createElement('img');
+            image.src = source;
+            //image.style.width = '0';
+            image.style.objectFit = 'cover';
+            image.style.objectPosition = 'center';
+
+            this.track.appendChild(image);
+        });
+        this.play();
+
+        return this.root;
     }
 
     play(){
+        console.log(this.track);
+        console.log(this.images.length);
         
-        //i want that the intital image laods up,
-        //then that image is changed after a duration
-
-        //should i have a slideshow where i load up all 
-        //the images before hand, or should i have one
-        //where they are loaded as needed?
-        //loading before hand is better performance-wise and they arent enough images to be an issue.
-
-        //but if i have them laid out beforehand, how 
-        //can i move that image into the slot wehn necessary?
-        //css transitions? or should there be an images list
-        //and an image slot and then after a timeout, i set the image slot
-        //source to the next image in the list, i feel like in that case
-        //i would even need to laod them efore hand and hide them with
-        //oveflow hidden, id just change the img src dynamically to point 
-        //to the next
-        //and css transitions should still be able to work
-        //as they are loaded when the elements they apply to 
-        //experience chnages/creation, no?
+        let index = 0;
+      
+        setInterval(() => {
+            console.log("inside setInterval");
+            if(index === this.images.length-1){
+                index = -1;
+            }
+            index++;
+            gsap.to(this.track, {
+                x: `-${index * 500}`,
+                duration: 0.5,
+                ease: "power2.inOut"
+            });
+            //index++;
+        }, this.speed);
     }
 }
 
 export { Slideshow };
-
-//also how should i design this slideshow in terms of elements?
-//technically I could have multiple divs and initialize the backgrounds on them
-//or i could have mulple img elements.
-//my goal is to have a slideshow where each image has a popup with some context
-//to the image, as opposed to only being the images

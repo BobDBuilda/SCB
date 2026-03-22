@@ -1,10 +1,7 @@
 class emailForm{
     constructor(scaffold) {
         this.scaffold = scaffold;
-        //bind handlers once (important for removeEventListener later)
-        this.handleClick = this.handleClick.bind(this);
-        //this.Render();
-        //this.Mount();
+        //this.handleClick = this.handleClick.bind(this);
         //without these id probably have to keep track of all the elements
         //within the DOM that i created(possibly as an array)
         //and invoke render for each
@@ -16,19 +13,22 @@ class emailForm{
         //the thing is submit was created outside of here
         //and the scope is not global,
         //should i have submit be binded to the object
-        this.submit.addEventListener('click', (e) => {
-            //ideally you do not want to be calling a send email function
-            //from in here
-            //i think having the senEmail function here is fine
-            //even though it breaks SRP, simply because this is not
-            //too complex
-            this.createEmail();
-            this.sendEmail();
+        this.root.addEventListener('submit', (e) => {
+            //if(e.target === this.submit){
+             console.log("SUBMIT FIRED");
+                e.preventDefault(); 
+                this.createEmail();
+                this.sendEmail();
+            //}
+            
+           
         })
     }
 
     //gonna abstract this later
     render() {
+        this.root = document.createElement('form');
+        this.root.name = 'email-form';
         Object.entries(this.scaffold).forEach(([key, value]) => {
             this.label = document.createElement('label');
             this.label.textContent = key;
@@ -36,24 +36,24 @@ class emailForm{
                 this.message = document.createElement('textarea');
                 this.message.style.height = "200px";
                 this.message.name = key;
-                this.root.appendChild(label);
-                this.root.appendChild(textarea);
+                this.root.appendChild(this.label);
+                this.root.appendChild(this.message);
             } else {
                 this.input = document.createElement('input');
                 this.input.type = value;
                 this.input.name = key;
-                this.root.appendChild(label);
-                this.root.appendChild(input);
+                this.root.appendChild(this.label);
+                this.root.appendChild(this.input);
             }
         });
-        this.root = document.createElement('form');
-        this.root.name = 'email-form';
-
+        
         this.submit = document.createElement('button');
         this.submit.textContent = "Submit";
         this.submit.type = "submit";
 
-        this.root.appendChild(submit);
+        this.root.appendChild(this.submit);
+        this.init();
+        return this.root;
     }
 
     async sendEmail(data){
@@ -82,6 +82,10 @@ class emailForm{
         const data = {
             
         }
+    }
+
+    handleClick(){
+
     }
 }
 

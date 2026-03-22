@@ -1,44 +1,51 @@
-[name="hero"]{
+*, html, body{
+    box-sizing: border-box;
+    margin: none;
+    padding: none;
+}
+
+[name="Main"]{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 90vh;
     background-color: #f5f5f5;
     overflow: hidden;
-    width: 80%;
-}
-
-[name="contact"]{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 500px;
-    background-color: #f5f5f5;
-    width: 50%;
-}
-
-[name="contact"] > form{
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    align-items: center;
-    justify-content: center;
-}
-
-form:children{
-    border: 2px solid;
-}
-
-
-
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 10vh;
-    background-color: #fff;
-    color: black;
     width: 100%;
+}
+
+[data-name='slideshow']{
+    display:flex;
+    width: 85%;
+    border-radius: 30px;
+    overflow: hidden;
+    
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.05), 
+        0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-name='track']{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+[name='email-form']{
+    margin: 2em 0;
+    padding: 1em 0;
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 600px){
+    [data-name='slideshow']{
+        min-width: 100%;
+        border-radius: 0px;
+        box-shadow: none;
+        height: 300px;
+
+    }
+
+    
 }

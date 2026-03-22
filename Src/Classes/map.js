@@ -2,26 +2,17 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 class Map{
-    constructor(mountPoint, location = [13.094053451098295, -59.6021500037629], zoom = 17) {
-        this.mountPoint = mountPoint;
-        this.root = document.createElement('div');
-        this.map = L.map(this.root).setView(location, zoom);
-        this.markers = [];
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(this.map);
-        L.marker(location).addTo(this.map)
-            .bindPopup('Our Location')
-            .openPopup();
-
-        this.root.style.height = '400px'; // Set the height of the map
-        this.mount(); 
-        this.locationInquiry();
+    constructor(location = [13.094053451098295, -59.6021500037629], zoom = 17) {
+        //this.locationInquiry();
+        this.location = location;
+        this.zoom = zoom;
     }
 
-    mount(){
-        this.mountPoint.appendChild(this.root);
+    init(){
+        this.handleClick = this.map.addEventListener('click', () => {
+            console.log("map clciked");
+            window.open("https://maps.google.com", "_blank", "noopener,noreferrer");
+        })
     }
 
     locationInquiry(){
@@ -47,6 +38,23 @@ class Map{
             const marker = this.markers.pop();
             this.map.removeLayer(marker);
         }
+    }
+
+    render(){
+        this.root = document.createElement('div');
+        this.map = L.map(this.root).setView(this.location, this.zoom);
+        //this.markers = [];
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(this.map);
+        L.marker(this.location).addTo(this.map)
+            .bindPopup('Our Location')
+            .openPopup();
+        this.root.style.width = '100%';
+        this.root.style.height = '400px'; // Set the height of the map
+
+        return this.root;
     }
 }
 

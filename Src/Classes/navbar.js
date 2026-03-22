@@ -8,13 +8,10 @@
 //not a standout feature.
 
 class Navbar{
-    constructor(mountPoint){
+    constructor(){
         this.links = ['Home', 'About', 'Services', 'Contact', 'Search'];
-        this.mountPoint = mountPoint;
         this.root = document.createElement('nav');
         this.root.className = 'navbar';
-        this.render();
-        this.mount();
     }
 
     render(){
@@ -24,11 +21,11 @@ class Navbar{
             a.textContent = link;
             this.root.appendChild(a);
         });
+
+        return this.root;
     }   
 
-    mount(){
-        this.mountPoint.appendChild(this.root);
-    }
+   
 }
 
 export { Navbar };
