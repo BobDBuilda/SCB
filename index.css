@@ -10,14 +10,26 @@
     align-items: center;
     justify-content: center;
     background-color: #f5f5f5;
-    overflow: hidden;
     width: 100%;
+}
+
+.navbar{
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100%;
+    margin: 0 0 25px 0;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.09);
+    height: 75px;
 }
 
 [data-name='slideshow']{
     display:flex;
     width: 85%;
-    border-radius: 30px;
+    height: 500px;
+    border-radius: 10px;
     overflow: hidden;
     
     box-shadow: 
@@ -35,7 +47,50 @@
     padding: 1em 0;
     display: flex;
     width: 80%;
+    max-width: 500px;
     flex-direction: column;
+}
+
+[name='email-form'] > input, textarea{
+    outline: none;
+    border: none;
+    padding: 0.5em;
+    margin: 5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+[data-name='logo-container']{
+    width: 250px;
+    height: 75px;
+    overflow: hidden;
+}
+[data-name='logo-container'] > img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+[data-name='func-container']{
+    
+}
+
+[data-name='search-bar']{
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    box-shadow: 
+        0px 2px 4px rgba(111, 0, 200, 0.09);
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.nav-item{
+    padding: 10px;
+    outline: 1px solid rgba(111, 0, 200, 0.09);
+    margin: 0 2px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
 }
 
 @media screen and (max-width: 600px){
@@ -44,8 +99,42 @@
         border-radius: 0px;
         box-shadow: none;
         height: 300px;
-
     }
 
-    
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        height: 80px;
+    }
+
+    [data-name='logo-container'], [data-name='func-container']{
+        
+        visibility: hidden;
+    }
+
+    [data-name='search-bar']{
+        display: flex;
+        visibility: visible;
+        margin: auto auto 20px auto;
+        width: 100%;
+    }
 }
+
+@media screen and (max-width: 1100px){
+    [data-name='slideshow']{
+        min-width: 100%;
+        border-radius: 0px;
+    }
+
+     [data-name='logo-container'], [data-name='func-container']{
+        display: none;
+    }
+
+    [data-name='search-bar']{
+        display: flex;
+        visibility: visible;
+        margin: auto auto 20px auto;
+        width: 100%;
+    }
+}
+

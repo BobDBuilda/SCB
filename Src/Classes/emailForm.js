@@ -21,7 +21,9 @@ class emailForm{
                 this.sendEmail();
             //}
             
-           
+           //would importing css be the best option to avoid large 
+           //css files?
+           //just have multiple and import them when necessary
         })
     }
 
@@ -57,7 +59,7 @@ class emailForm{
     }
 
     async sendEmail(data){
-        return await fetch(('http://localhost:3000/send-email'), {
+        return await fetch(('http://localhost:8080/send-email'), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' ,
@@ -82,10 +84,6 @@ class emailForm{
         const data = {
             
         }
-    }
-
-    handleClick(){
-
     }
 }
 

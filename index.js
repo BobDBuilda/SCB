@@ -14,19 +14,6 @@ import { App } from './Src/Classes/App.js';
 //     console.log("amway");
 // });
 
-
-
-//so essentially, i need something to mount to 'main'
-//and then i mount to all the rest of the components
-//to that
-//what i can have is a class called 'app'
-//
-
-
-
-
-
-// const navbar = new Navbar(document.querySelector('nav'));
 const slideshow = new Slideshow([
     "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Nob29sfGVufDB8fDB8fHww&w=1000&q=80",
     "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Nob29sfGVufDB8fDB8fHww&w=1000&q=80",
@@ -36,7 +23,7 @@ const nav = new Navbar();
 const emailform = new emailForm({
     name: 'input',
     email: 'email',
-    message: 'textarea'
+    message: 'textarea',
 });
 const map = new Map();
 

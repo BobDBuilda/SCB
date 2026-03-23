@@ -1,6 +1,6 @@
 class Slide{
-    constructor(image, content) {
-        this.image = image.src;
+    constructor(imageSource, content) {
+        this.image = imageSource;
         this.content = content;
     }
 
@@ -9,11 +9,15 @@ class Slide{
         this.imageContainer = document.createElement('img');
         this.contentContainer = document.createElement('div');
 
-        this.root.appendChild(this.imageContainer);
-        this.root.appendChild(this.contentContainer);
-
+        this.
         return this.root;
     }
 }
 
 export {Slide};
+
+//should i pass these slides at runtime into slideshow
+//or should slideshow create them dynamically
+//its highly unlikely that nay other component will use this besides
+//slideshow
+//as such, its best to have slideshow control ownership
