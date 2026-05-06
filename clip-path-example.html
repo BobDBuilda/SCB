@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Clip-Path Curves Example</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Lucida Sans', sans-serif;
+            background: #f0f0f0;
+        }
+
+        .section {
+            height: 400px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+        }
+
+        /* 1. Simple Elliptical Curve */
+        .curve-ellipse {
+            background: linear-gradient(to bottom, #2f4f5d, #182b3a);
+            /* clips the bottom into a smooth arc */
+            clip-path: ellipse(100% 100% at 50% 0%);
+        }
+
+        /* 2. Complex Wave (using SVG path) */
+        .curve-wave {
+            background: linear-gradient(to bottom, #182b3a, #0b1a26);
+            /* 
+               A path() uses SVG path syntax. 
+               This example creates a gentle wave across the bottom.
+            */
+            clip-path: path("M0 0 L100% 0 L100% 80% Q 50% 100%, 0 80% Z");
+            /* Note: relative % in path() is a newer feature, 
+               often it's safer to use an inline SVG for full responsiveness. */
+        }
+
+        /* 3. Responsive Wave (The Most Reliable Method) */
+        .curve-svg {
+            background: linear-gradient(to bottom, #2b4c63, #2f4f5d);
+            position: relative;
+            /* No clip-path here, we use an SVG overlay instead */
+        }
+
+        .svg-separator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="section curve-ellipse">
+        Simple Ellipse Curve
+    </div>
+
+    <div class="section curve-wave">
+        SVG Path Wave
+    </div>
+
+    <div class="section curve-svg">
+        SVG Overlay (Most Stable)
+        <svg class="svg-separator" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#f0f0f0" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,213.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+</body>
+</html>

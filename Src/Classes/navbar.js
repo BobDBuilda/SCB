@@ -1,15 +1,6 @@
-//what should comprise a navbar?
-//links to other pages/sections
-//search bar
-//logo
-//but in terms of layout, should be a flex or grid
-//logo to the far left, everything else to the far right,
-//search bar to the rightmost of it, since its functionality is
-//not a standout feature.
-
 class Navbar{
     constructor(){
-        this.links = ['Home', 'About', 'Services', 'Contact', 'Search'];
+        this.links = ['Home', 'About', 'Services', 'Contact'];
     }
 
     render(){
@@ -20,10 +11,42 @@ class Navbar{
         this.logoContainer.dataset.name = 'logo-container';
         this.funcContainer = document.createElement('div');
         this.funcContainer.dataset.name = 'func-container';
+        this.title = document.createElement('div');
+        this.title.style.fontFamily = "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif";
+        this.title.style.display = 'flex';
+        this.title.style.alignItems = 'center';
+        this.title.style.lineHeight = '1';
+
+        const sChar = document.createElement('span');
+        sChar.textContent = 'S';
+        sChar.style.fontSize = '100px';
+        sChar.style.fontWeight = 'bold';
+
+        const stackedText = document.createElement('div');
+        stackedText.style.display = 'flex';
+        stackedText.style.flexDirection = 'column';
+        stackedText.style.fontSize = '40px';
+        stackedText.style.textTransform = 'uppercase';
+        stackedText.style.fontWeight = 'bold';
+        stackedText.style.marginLeft = '5px';
+        stackedText.style.fontFamily = "inherit";
+
+        const upreme = document.createElement('span');
+        upreme.textContent = 'upreme';
+        const counselling = document.createElement('span');
+        counselling.style.fontSize = '25px';
+        counselling.textContent = 'Counselling';
+
+        stackedText.appendChild(upreme);
+        stackedText.appendChild(counselling);
+
+        this.title.appendChild(sChar);
+        this.title.appendChild(stackedText);
+        this.title.style.color = '#fff';
         this.logo = document.createElement('img');
         this.logo.src = './Src/Assets/logo.png';
 
-        this.logoContainer.appendChild(this.logo);
+        this.logoContainer.appendChild(this.title);
 
         this.links.forEach(link => {
             console.log(link);
