@@ -1,24 +1,13 @@
-import { Slideshow } from './Src/Classes/slideshow.js'; 
-import { emailForm } from './Src/Classes/emailForm.js';  
-import { Map } from './Src/Classes/map.js';
-import { Router } from './Src/Classes/Router.js';
-import { Navbar } from './Src/Classes/navbar.js';
-import { App } from './Src/Classes/App.js';
+import { Slideshow } from './Src/Components/slideshow.js'; 
+import { emailForm } from './Src/Components/emailForm.js';  
+import { Map } from './Src/Components/map.js';
+import { Router } from './Src/Components/Router.js';
+import { Navbar } from './Src/Components/navbar.js';
+import { App } from './Src/Components/App.js';
+import { PrivacyNotice } from './Src/Components/PrivacyNotice.js';
+import { Hero } from './Src/Components/Hero.js';
+import { ProductContainer } from './Src/Components/ProductContainer.js';
 
-
-//const router = new Router();
-// router.get("/", () => {
-//     //i assume when express implements this res, req
-//     //are populated by destructuring an object that resides 
-//     //lower down/more abstracted
-//     console.log("amway");
-// });
-
-// const slideshow = new Slideshow([
-//     "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Nob29sfGVufDB8fDB8fHww&w=1000&q=80",
-//     "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Nob29sfGVufDB8fDB8fHww&w=1000&q=80",
-//     "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Nob29sfGVufDB8fDB8fHww&w=1000&q=80"
-// ]);
 const nav = new Navbar();
 const emailform = new emailForm({
     name: 'input',
@@ -26,13 +15,20 @@ const emailform = new emailForm({
     message: 'textarea',
 });
 const map = new Map();
+const notice = new PrivacyNotice();
+const hero = new Hero();
+const products = new ProductContainer();
 
 const main = document.querySelector('[name="Main"]');
-main.appendChild(nav.render());
-// main.appendChild(tile.render())
-//main.appendChild(slideshow.render());
-// main.appendChild(emailform.render());
-// main.appendChild(map.render());
+
+const heroElement = hero.render();
+heroElement.appendChild(nav.render());
+// main.appendChild(products.render());
+
+main.appendChild(heroElement);
+main.appendChild(products.render());
+main.appendChild(notice.render());
+main.appendChild(map.render());
 
 
 // const email = new emailForm({
