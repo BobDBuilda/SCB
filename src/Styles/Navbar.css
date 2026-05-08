@@ -1,0 +1,39 @@
+.navbar {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    min-width: 100%;
+    background-color: transparent;
+    margin: 0;
+    height: 75px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10; /* Ensures it sits above hero content and SVG */
+}
+
+.nav-item {
+    padding: 10px;
+    margin: 0 2px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Lucida Sans', sans-serif;
+}
+
+[data-name='logo-container'] {
+    width: 250px;
+    height: fit-content;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        height: 80px;
+    }
+    [data-name='logo-container'], [data-name='func-container'] {
+        visibility: hidden;
+    }
+}

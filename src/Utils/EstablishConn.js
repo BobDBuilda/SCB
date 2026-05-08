@@ -1,5 +1,3 @@
-import { error } from "console";
-
 const establishConnection = async() => {
     try{
         const res = await fetch("http://localhost:3000");
