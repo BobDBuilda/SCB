@@ -8,7 +8,7 @@ class Navbar {
 
     render() {
         const linksHtml = this.links.map(link => `
-            <a class="nav-item" href="#${link.toLowerCase()}">${link}</a>
+            <a class="nav-item" href="${link.toLowerCase()}">${link}</a>
         `).join('');
 
         const html = `

@@ -1,0 +1,63 @@
+.recommendation-card {
+    background: rgba(255, 255, 255, 0.05); /* Transparent */
+    backdrop-filter: blur(12px); /* Matte finish */
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2.5em;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 1em;
+    position: relative;
+    
+    /* Gradient Border implementation */
+    border: 1px solid transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), 
+                      linear-gradient(135deg, rgba(178, 34, 34, 0.8), rgba(36, 63, 82, 0.8));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.quote-icon {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-family: serif;
+    line-height: 1;
+}
+
+.recommendation-text {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 1.5em;
+    position: relative;
+    z-index: 1;
+}
+
+.recommendation-author {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.author-role {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}

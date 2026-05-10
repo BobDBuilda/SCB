@@ -25,9 +25,58 @@
     position: relative;
     z-index: 1; /* Keep content above the SVG background */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Changed from space-between */
     height: 100%;
     color: white;
+    padding: 0 5%; /* Reduced from 10% to push text further left */
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    flex: 0 1 auto; /* Don't grow, just take needed space up to max-width */
+    text-align: left;
+    max-width: 700px; /* Slightly wider */
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    margin-bottom: 0.2em;
+    line-height: 1.1;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+.hero-card-wrapper {
+    flex: 1; /* Allow it to push the card to the right */
+    display: flex;
+    justify-content: flex-end; /* Align card to the end of its flexible container */
+    margin-left: 20px;
+}
+
+@media (max-width: 1024px) {
+    .hero-content {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 100px 20px;
+    }
+
+    .hero-text {
+        text-align: center;
+        margin-bottom: 3em;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .hero-card-wrapper {
+        margin-left: 0;
+    }
 }
