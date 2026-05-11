@@ -12,7 +12,7 @@ class Home extends IComponent {
         const layout = TemplateEngine.create(`
             <div class="page-home">
                 <section data-ref="hero-section"></section>
-                <section data-ref="products-section"></section>
+                <section data-ref="products-section" id="services"></section>
                 <section data-ref="map-section"></section>
                 <footer data-ref="footer-section"></footer>
             </div>

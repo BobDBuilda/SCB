@@ -13,14 +13,26 @@ class Router {
         this.render(path);
     }
 
-    render(path = location.pathname) {
+    async render(path = location.pathname) {
         const handler = this.routes.get(path) || this.routes.get('/404');
+        
+        // Add fade-out class
+        this.root.classList.add('page-fade-out');
+
+        // Wait for the transition duration (matching the 0.3s in CSS)
+        await new Promise(resolve => setTimeout(resolve, 300));
+
         if (!handler) {
             this.root.innerHTML = '<h1>404 Not Found</h1>';
-            return;
+        } else {
+            this.root.replaceChildren(handler());
         }
 
-        this.root.replaceChildren(handler());
+        // Scroll to top on page change
+        window.scrollTo(0, 0);
+
+        // Remove fade-out class to trigger fade-in
+        this.root.classList.remove('page-fade-out');
     }
 
     start() {

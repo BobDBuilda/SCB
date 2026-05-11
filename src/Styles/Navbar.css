@@ -1,39 +1,58 @@
 .navbar {
-    padding: 1em;
+    padding: 0.5em 5%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     min-width: 100%;
-    background-color: transparent;
+    background-color: #182b3a; /* Deep brand blue */
     margin: 0;
-    height: 75px;
-    position: absolute;
+    height: 90px;
+    position: sticky; /* Keeps it at the top when scrolling */
     top: 0;
     left: 0;
-    z-index: 10; /* Ensures it sits above hero content and SVG */
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .nav-item {
-    padding: 10px;
-    margin: 0 2px;
-    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 0 5px;
     text-decoration: none;
-    color: #fff;
+    color: #ffffff;
     font-family: 'Lucida Sans', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #B22222; /* Brand red on hover */
 }
 
 [data-name='logo-container'] {
-    width: 250px;
+    flex-shrink: 0;
     height: fit-content;
-    overflow: hidden;
 }
 
-@media screen and (max-width: 600px) {
+/* Specific fix for Hero overlay: if the navbar is inside the hero, make it absolute */
+.hero .navbar {
+    position: absolute;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 800px) {
     .navbar {
-        display: flex;
+        height: auto;
+        padding: 1em;
         flex-direction: column;
-        height: 80px;
+        gap: 1em;
     }
-    [data-name='logo-container'], [data-name='func-container'] {
-        visibility: hidden;
+    
+    [data-name='func-container'] {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

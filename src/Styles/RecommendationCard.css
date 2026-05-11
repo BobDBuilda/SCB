@@ -1,18 +1,19 @@
 .recommendation-card {
-    background: rgba(255, 255, 255, 0.05); /* Transparent */
-    backdrop-filter: blur(12px); /* Matte finish */
+    background: rgba(255, 255, 255, 0.05); /* Transparent surface */
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 2.5em;
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
     margin: 1em;
     position: relative;
     
-    /* Gradient Border implementation */
+    /* Gradient Border implementation that respects border-radius */
     border: 1px solid transparent;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), 
-                      linear-gradient(135deg, rgba(178, 34, 34, 0.8), rgba(36, 63, 82, 0.8));
+    background-image: 
+        linear-gradient(rgba(15, 30, 45, 0.7), rgba(15, 30, 45, 0.7)), /* Inner background color */
+        linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(47, 79, 93, 0.4)); /* Subtle border gradient */
     background-origin: border-box;
     background-clip: padding-box, border-box;
     
@@ -21,7 +22,7 @@
 
 .recommendation-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 .quote-icon {

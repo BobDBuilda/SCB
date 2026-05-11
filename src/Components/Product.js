@@ -18,8 +18,10 @@ class Product extends IComponent {
         
         const html = `
             <div class="product-item">
-                <h3>${this.name}</h3>
-                <p>${description}</p>
+                <div class="product-content">
+                    <h3>${this.name}</h3>
+                    <p>${description}</p>
+                </div>
             </div>
         `;
         

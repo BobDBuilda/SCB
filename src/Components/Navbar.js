@@ -3,7 +3,7 @@ import '../Styles/Navbar.css';
 
 class Navbar {
     constructor() {
-        this.links = ['Home', 'About', 'Stories', 'Services', 'Contact'];
+        this.links = ['Home', 'About', 'Stories', 'FAQ', 'Services', 'Contact'];
     }
 
     render() {
@@ -14,11 +14,11 @@ class Navbar {
         const html = `
             <div class="navbar">
                 <div data-name="logo-container">
-                    <div style="font-family: 'Lucida Sans', sans-serif; display: flex; align-items: center; line-height: 1; color: #B22222;">
-                        <span style="font-size: 80px; font-weight: bold;">S</span>
-                        <div style="display: flex; flexDirection: column; font-size: 40px; text-transform: uppercase; font-weight: bold; margin-left: 5px; font-family: inherit;">
-                            <span>upreme</span>
-                            <span style="font-size: 25px;">Counselling</span>
+                    <div style="font-family: 'Lucida Sans', sans-serif; display: flex; align-items: center; line-height: 1; color: #B22222; cursor: pointer;" onclick="location.href='/'">
+                        <span style="font-size: 80px; font-weight: bold; letter-spacing: -5px;">S</span>
+                        <div style="display: flex; flex-direction: column; justify-content: center; margin-left: 2px; height: 70px; text-transform: uppercase; font-family: inherit; font-weight: bold;">
+                            <span style="font-size: 48px; line-height: 0.7; display: flex; align-items: flex-end;">upreme</span>
+                            <span style="font-size: 18px; line-height: 1.3; letter-spacing: 1px;">Counselling</span>
                         </div>
                     </div>
                 </div>

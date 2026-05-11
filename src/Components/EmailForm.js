@@ -1,4 +1,5 @@
 import { TemplateEngine } from './TemplateEngine.js';
+import '../Styles/EmailForm.css';
 
 class EmailForm {
     constructor(scaffold) {
@@ -7,44 +8,72 @@ class EmailForm {
 
     render() {
         const fieldsHtml = Object.entries(this.scaffold).map(([key, value]) => {
+            const labelText = key.replace(/([A-Z])/g, ' $1').trim();
             if (value === "textarea") {
                 return `
-                    <label>${key}</label>
-                    <textarea name="${key}" style="height: 200px;"></textarea>
+                    <div class="form-group">
+                        <label>${labelText}</label>
+                        <textarea name="${key}" rows="5" required></textarea>
+                    </div>
                 `;
             } else {
                 return `
-                    <label>${key}</label>
-                    <input type="${value}" name="${key}">
+                    <div class="form-group">
+                        <label>${labelText}</label>
+                        <input type="${value}" name="${key}" required>
+                    </div>
                 `;
             }
         }).join('');
 
         const html = `
-            <form name="email-form">
+            <form class="email-form">
                 ${fieldsHtml}
-                <button type="submit">Submit</button>
+                <div data-ref="message" class="form-message"></div>
+                <button type="submit" data-ref="submitBtn">Send Message</button>
             </form>
         `;
 
         this.root = TemplateEngine.create(html);
+        this.refs = TemplateEngine.getRefs(this.root);
         this.init();
         return this.root;
     }
 
     init() {
         this.root.addEventListener('submit', (e) => {
-            console.log("SUBMIT FIRED");
             e.preventDefault();
             this.handleSubmit();
         });
     }
 
-    handleSubmit() {
+    async handleSubmit() {
+        const btn = this.refs.submitBtn;
+        const msg = this.refs.message;
+        
+        btn.disabled = true;
+        btn.textContent = "Sending...";
+        msg.className = "form-message"; // Reset
+
         const formData = new FormData(this.root);
         const data = Object.fromEntries(formData.entries());
-        console.log("Form Data:", data);
-        this.sendEmail(data);
+
+        try {
+            const success = await this.sendEmail(data);
+            if (success) {
+                msg.textContent = "Thank you! Your message has been sent.";
+                msg.classList.add('success');
+                this.root.reset();
+            } else {
+                throw new Error("Failed to send");
+            }
+        } catch (error) {
+            msg.textContent = "Oops! Something went wrong. Please try again later.";
+            msg.classList.add('error');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = "Send Message";
+        }
     }
 
     async sendEmail(data) {
@@ -57,12 +86,12 @@ class EmailForm {
                 },
                 body: JSON.stringify(data)
             });
-            return response;
+            return response.ok;
         } catch (error) {
             console.error("Failed to send email:", error);
+            return false;
         }
     }
 }
 
 export { EmailForm };
-
