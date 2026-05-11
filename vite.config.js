@@ -1,8 +1,10 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  root: '.',         // project root
+  plugins: [],
+  appType: 'spa',
+  root: '.',
   build: {
-    outDir: 'dist',  // output folder
+    outDir: 'dist',
   },
 });
