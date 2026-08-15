@@ -2,7 +2,7 @@ import { IComponent } from '../Interfaces/IComponent.js';
 import { TemplateEngine } from '../Components/TemplateEngine.js';
 import { Navbar } from '../Components/Navbar.js';
 import { EmailForm } from '../Components/EmailForm.js';
-import { PrivacyNotice } from '../Components/PrivacyNotice.js';
+import { Footer } from '../Components/Footer.js';
 import '../Styles/Pages.css';
 
 class Booking extends IComponent {
@@ -33,14 +33,18 @@ class Booking extends IComponent {
         
         const bookingForm = new EmailForm({
             fullName: 'text',
+            email: 'email',
             preferredDate: 'date',
             serviceType: 'text',
-            additionalNotes: 'textarea'
+            additionalNotes: 'textarea',
+            endpoint: '/api/booking',
+            submitText: 'Request Booking',
+            successText: 'Thank you! Your booking request has been sent.'
         });
 
         refs.header.appendChild(new Navbar().render());
         refs['form-container'].appendChild(bookingForm.render());
-        refs.footer.appendChild(new PrivacyNotice().render());
+        refs.footer.appendChild(new Footer().render());
 
         return layout;
     }

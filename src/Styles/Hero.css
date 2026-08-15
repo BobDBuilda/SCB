@@ -2,13 +2,7 @@
     width: 100%;
     position: relative;
     height: 850px;
-    background: linear-gradient(
-        to top,
-        #2f4f5d 0%,
-        #243f52 35%,
-        #182b3a 65%,
-        #0b1a26 100%
-    );
+    background: #ffffff;
     overflow: hidden; /* Ensures SVG doesn't bleed out */
 }
 
@@ -29,7 +23,7 @@
     align-items: center;
     justify-content: flex-start; /* Changed from space-between */
     height: 100%;
-    color: white;
+    color: #243f52;
     padding: 0 5%; /* Reduced from 10% to push text further left */
     max-width: 1440px;
     margin: 0 auto;
@@ -52,6 +46,7 @@
     font-size: 1.5rem;
     opacity: 0.9;
     margin-bottom: 2em;
+    color: #666;
 }
 
 .hero-btns {
@@ -84,15 +79,14 @@
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(5px);
+    background: rgba(36, 63, 82, 0.05);
+    color: #243f52;
+    border: 1px solid rgba(36, 63, 82, 0.3);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: white;
+    background: rgba(36, 63, 82, 0.1);
+    border-color: #243f52;
     transform: translateY(-2px);
 }
 

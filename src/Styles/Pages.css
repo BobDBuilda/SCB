@@ -1,5 +1,5 @@
 /* Shared Page Styles */
-.page-about, .page-booking, .page-contact {
+.page-about, .page-booking, .page-contact, .page-legal {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -97,4 +97,427 @@
     height: 400px;
     margin-top: 4em;
     width: 100%;
+}
+
+/* Stories Page */
+.page-stories {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.stories-header {
+    text-align: center;
+    margin-bottom: 4em;
+}
+
+.stories-header h1 {
+    color: #B22222;
+    font-size: 3rem;
+    margin-bottom: 0.5em;
+}
+
+.stories-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.story-card {
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 2.5em;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.story-quote {
+    color: #B22222;
+    font-family: serif;
+    font-size: 4rem;
+    line-height: 1;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    opacity: 0.2;
+}
+
+.story-text {
+    color: #444;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 2em;
+    font-size: 1rem;
+}
+
+.story-author {
+    display: flex;
+    flex-direction: column;
+}
+
+.story-author-name {
+    color: #243f52;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.story-author-role {
+    color: #888;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.stories-cta {
+    text-align: center;
+    margin-top: 5em;
+    padding: 4em 2em;
+    background: linear-gradient(135deg, #182b3a 0%, #243f52 100%);
+    border-radius: 16px;
+    color: white;
+}
+
+.stories-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5em;
+}
+
+.stories-cta p {
+    opacity: 0.9;
+    margin-bottom: 2em;
+    font-size: 1.1rem;
+}
+
+.stories-cta .btn-primary {
+    background: #B22222;
+    border-color: #B22222;
+    color: white;
+}
+
+.stories-cta .btn-primary:hover {
+    background: #8b0000;
+}
+
+/* FAQ Page */
+.page-faq {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 4em;
+}
+
+.faq-header h1 {
+    color: #B22222;
+    font-size: 3rem;
+    margin-bottom: 0.5em;
+}
+
+.faq-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.faq-question {
+    width: 100%;
+    background: #f9f9f9;
+    border: none;
+    padding: 1.2em 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #243f52;
+    text-align: left;
+    transition: background 0.2s ease;
+}
+
+.faq-question:hover {
+    background: #f0f0f0;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: #B22222;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-left: 1em;
+    transition: transform 0.2s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 1.5em;
+    background: white;
+}
+
+.faq-open .faq-answer {
+    max-height: 300px;
+    padding: 1.5em;
+}
+
+.faq-answer p {
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.faq-cta {
+    text-align: center;
+    margin-top: 4em;
+    padding: 3em;
+    background: #f9f9f9;
+    border-radius: 12px;
+}
+
+.faq-cta p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 1.5em;
+}
+
+/* Services Page */
+.page-services {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 4em;
+}
+
+.services-header h1 {
+    color: #B22222;
+    font-size: 3rem;
+    margin-bottom: 0.5em;
+}
+
+.services-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.service-card {
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 3em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.service-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.service-card-header h2 {
+    color: #243f52;
+    font-size: 1.8rem;
+}
+
+.service-description {
+    color: #555;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    margin-bottom: 1.5em;
+}
+
+.service-benefits {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.service-benefits li {
+    color: #444;
+    padding: 0.5em 1em;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid #B22222;
+    font-size: 0.95rem;
+}
+
+.service-cta {
+    display: inline-block;
+}
+
+/* Site Footer */
+.site-footer {
+    background: #182b3a;
+    color: #ddd;
+    padding: 3em 20px 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2em;
+}
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links nav, .footer-legal nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+
+.footer-links a, .footer-legal a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover, .footer-legal a:hover {
+    color: #fff;
+}
+
+.footer-logo {
+    height: 60px;
+    margin-bottom: 1em;
+}
+
+.footer-tagline {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.footer-contact p {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.5em;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 2em;
+    padding: 1.5em 0;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #888;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* Legal Pages (Privacy, Terms) */
+.legal-content h1 {
+    color: #B22222;
+    font-size: 2.5rem;
+    margin-bottom: 1em;
+}
+
+.legal-content .legal-effective {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 3em;
+}
+
+.legal-content section {
+    margin-bottom: 2.5em;
+}
+
+.legal-content h2 {
+    color: #243f52;
+    font-size: 1.4rem;
+    margin-bottom: 0.8em;
+}
+
+.legal-content p {
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 1em;
+}
+
+.legal-content ul {
+    margin: 0 0 1em 1.5em;
+    padding: 0;
+}
+
+.legal-content li {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 0.5em;
 }

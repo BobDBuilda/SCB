@@ -35,10 +35,9 @@
     height: fit-content;
 }
 
-/* Specific fix for Hero overlay: if the navbar is inside the hero, make it absolute */
+/* Hero navbar: absolute positioning but keep dark background for contrast */
 .hero .navbar {
     position: absolute;
-    background-color: transparent;
     box-shadow: none;
 }
 

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#182b3a" opacity="0.1"/>
+  
+  <!-- Foundation blocks forming a pyramid/base -->
+  <g class="foundation-blocks" transform="translate(50, 80)">
+    <!-- Base layer - 5 blocks -->
+    <rect x="0" y="80" width="20" height="20" rx="2" fill="#182b3a" class="block block-1"/>
+    <rect x="24" y="80" width="20" height="20" rx="2" fill="#243f52" class="block block-2"/>
+    <rect x="48" y="80" width="20" height="20" rx="2" fill="#B22222" class="block block-3"/>
+    <rect x="72" y="80" width="20" height="20" rx="2" fill="#C7953A" class="block block-4"/>
+    <rect x="96" y="80" width="20" height="20" rx="2" fill="#182b3a" class="block block-5"/>
+    
+    <!-- Second layer - 4 blocks -->
+    <rect x="12" y="56" width="20" height="20" rx="2" fill="#243f52" class="block block-6" opacity="0.9"/>
+    <rect x="36" y="56" width="20" height="20" rx="2" fill="#B22222" class="block block-7" opacity="0.9"/>
+    <rect x="60" y="56" width="20" height="20" rx="2" fill="#C7953A" class="block block-8" opacity="0.9"/>
+    <rect x="84" y="56" width="20" height="20" rx="2" fill="#182b3a" class="block block-9" opacity="0.9"/>
+    
+    <!-- Third layer - 3 blocks -->
+    <rect x="24" y="32" width="20" height="20" rx="2" fill="#B22222" class="block block-10" opacity="0.85"/>
+    <rect x="48" y="32" width="20" height="20" rx="2" fill="#C7953A" class="block block-11" opacity="0.85"/>
+    <rect x="72" y="32" width="20" height="20" rx="2" fill="#182b3a" class="block block-12" opacity="0.85"/>
+    
+    <!-- Fourth layer - 2 blocks -->
+    <rect x="36" y="8" width="20" height="20" rx="2" fill="#C7953A" class="block block-13" opacity="0.8"/>
+    <rect x="60" y="8" width="20" height="20" rx="2" fill="#182b3a" class="block block-14" opacity="0.8"/>
+    
+    <!-- Top block -->
+    <rect x="48" y="-16" width="20" height="20" rx="2" fill="#B22222" class="block block-15" opacity="0.95"/>
+  </g>
+  
+  <!-- SC text -->
+  <text x="100" y="165" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#182b3a">SC</text>
+  <text x="100" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666" letter-spacing="2">SUPREME COUNSELLING</text>
+</svg>
