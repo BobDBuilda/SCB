@@ -3,3 +3,16 @@ dist/
 .DS_Store
 *.local
 .codex
+.wrangler/
+
+# Backend / infrastructure (not part of the frontend repo)
+.dockerignore
+Dockerfile
+nginx.conf
+api-gateway-worker.js
+wrangler-api.jsonc
+db/
+*.pdf
+architecture*.svg
+infra-overview.md
+presentation*.html
