@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1100" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <linearGradient id="cfGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F38020"/>
+      <stop offset="100%" stop-color="#FAA761"/>
+    </linearGradient>
+    <linearGradient id="azPubGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0078D4"/>
+      <stop offset="100%" stop-color="#50A9EA"/>
+    </linearGradient>
+    <linearGradient id="azIntGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#103050"/>
+      <stop offset="100%" stop-color="#2B6A9E"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <filter id="shadowLight" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0078D4"/>
+    </marker>
+    <marker id="arrowWhite" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fff"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#F38020"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2EA043"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="35" text-anchor="middle" font-size="20" font-weight="700" fill="#1a1a2e">Supreme Counselling for Personal Development — Infrastructure Architecture</text>
+  <text x="600" y="55" text-anchor="middle" font-size="12" fill="#666">Cloudflare + Azure Public + Azure Internal (VNet-Isolated) — Deployment Region: US East</text>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 1: CLOUDFLARE -->
+  <!-- ============================================================ -->
+  <rect x="30" y="70" width="1140" height="195" rx="12" fill="url(#cfGrad)" opacity="0.08"/>
+  <rect x="30" y="70" width="1140" height="195" rx="12" fill="none" stroke="#F38020" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="50" y="92" font-size="14" font-weight="700" fill="#F38020">☁  CLOUDFLARE — Edge Security &amp; Routing</text>
+
+  <!-- CF Boxes row 1 -->
+  <rect x="55" y="105" width="200" height="65" rx="8" fill="#fff" stroke="#F38020" filter="url(#shadowLight)"/>
+  <text x="155" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#333">DNS</text>
+  <text x="155" y="152" text-anchor="middle" font-size="10" fill="#666">Domain resolution &amp; proxying</text>
+
+  <rect x="275" y="105" width="200" height="65" rx="8" fill="#fff" stroke="#F38020" filter="url(#shadowLight)"/>
+  <text x="375" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#333">WAF</text>
+  <text x="375" y="152" text-anchor="middle" font-size="10" fill="#666">OWASP rules, SQLi, XSS</text>
+
+  <rect x="495" y="105" width="200" height="65" rx="8" fill="#fff" stroke="#F38020" filter="url(#shadowLight)"/>
+  <text x="595" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#333">SSL / TLS</text>
+  <text x="595" y="152" text-anchor="middle" font-size="10" fill="#666">End-to-end encryption</text>
+
+  <rect x="715" y="105" width="200" height="65" rx="8" fill="#fff" stroke="#F38020" filter="url(#shadowLight)"/>
+  <text x="815" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Rate Limiting</text>
+  <text x="815" y="152" text-anchor="middle" font-size="10" fill="#666">Per-device token, 10 req/min</text>
+
+  <!-- CF origin arrow -->
+  <line x1="155" y1="170" x2="155" y2="200" stroke="#F38020" stroke-width="2" marker-end="url(#arrowOrange)"/>
+  <line x1="375" y1="170" x2="375" y2="200" stroke="#F38020" stroke-width="2"/>
+  <line x1="595" y1="170" x2="595" y2="200" stroke="#F38020" stroke-width="2"/>
+  <line x1="815" y1="170" x2="815" y2="200" stroke="#F38020" stroke-width="2"/>
+  <line x1="155" y1="200" x2="815" y2="200" stroke="#F38020" stroke-width="2"/>
+  <line x1="600" y1="200" x2="600" y2="225" stroke="#F38020" stroke-width="2" marker-end="url(#arrowOrange)"/>
+
+  <!-- CF Origin -->
+  <rect x="490" y="230" width="220" height="28" rx="8" fill="#F38020" filter="url(#shadowLight)"/>
+  <text x="600" y="249" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Origin → ACA Public FQDN</text>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 2: AZURE PUBLIC -->
+  <!-- ============================================================ -->
+  <rect x="30" y="275" width="1140" height="410" rx="12" fill="url(#azPubGrad)" opacity="0.06"/>
+  <rect x="30" y="275" width="1140" height="410" rx="12" fill="none" stroke="#0078D4" stroke-width="2"/>
+  <text x="50" y="298" font-size="14" font-weight="700" fill="#0078D4">☁  AZURE — Public-Facing Infrastructure</text>
+
+  <!-- Main arrow from Cloudflare down -->
+  <line x1="600" y1="258" x2="600" y2="290" stroke="#0078D4" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- ACA Environment Box -->
+  <rect x="55" y="310" width="1100" height="200" rx="10" fill="#0078D4" fill-opacity="0.04" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="75" y="330" font-size="12" font-weight="600" fill="#0078D4">ACA Environment (Consumption Plan — no VNet)</text>
+
+  <!-- Web App -->
+  <rect x="75" y="342" width="230" height="75" rx="8" fill="#fff" stroke="#0078D4" filter="url(#shadowLight)"/>
+  <text x="190" y="368" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Web App</text>
+  <text x="190" y="383" text-anchor="middle" font-size="10" fill="#555">Node.js SPA + API</text>
+  <text x="190" y="396" text-anchor="middle" font-size="9" fill="#888">serves /api/contact, /api/booking</text>
+
+  <!-- Ollama -->
+  <rect x="325" y="342" width="230" height="75" rx="8" fill="#fff" stroke="#0078D4" filter="url(#shadowLight)"/>
+  <text x="440" y="368" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Ollama Service</text>
+  <text x="440" y="383" text-anchor="middle" font-size="10" fill="#555">CPU-based (D4 dedicated)</text>
+  <text x="440" y="396" text-anchor="middle" font-size="9" fill="#888">Chat inference + embeddings</text>
+
+  <!-- RAG Embedding API -->
+  <rect x="575" y="342" width="230" height="75" rx="8" fill="#fff" stroke="#0078D4" filter="url(#shadowLight)"/>
+  <text x="690" y="368" text-anchor="middle" font-size="13" font-weight="700" fill="#333">RAG Embedding API</text>
+  <text x="690" y="383" text-anchor="middle" font-size="10" fill="#555">Document ingestion + retrieval</text>
+  <text x="690" y="396" text-anchor="middle" font-size="9" fill="#888">Vector search over public docs</text>
+
+  <!-- Web App arrows to services -->
+  <path d="M 305 380 L 325 380" stroke="#0078D4" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+  <path d="M 305 395 L 325 395" stroke="#0078D4" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowBlue)" opacity="0.5"/>
+  <path d="M 555 380 L 575 380" stroke="#0078D4" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+  <path d="M 555 395 L 575 395" stroke="#0078D4" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowBlue)" opacity="0.5"/>
+
+  <!-- Data services row -->
+  <rect x="825" y="342" width="160" height="75" rx="8" fill="#fff" stroke="#0078D4" filter="url(#shadowLight)"/>
+  <text x="905" y="363" text-anchor="middle" font-size="12" font-weight="700" fill="#333">Azure SQL DB</text>
+  <text x="905" y="378" text-anchor="middle" font-size="10" fill="#555">Serverless (auto-pause)</text>
+  <text x="905" y="393" text-anchor="middle" font-size="9" fill="#888">Bookings table</text>
+
+  <rect x="1000" y="342" width="140" height="75" rx="8" fill="#fff" stroke="#0078D4" filter="url(#shadowLight)"/>
+  <text x="1070" y="363" text-anchor="middle" font-size="12" font-weight="700" fill="#333">ACR</text>
+  <text x="1070" y="378" text-anchor="middle" font-size="10" fill="#555">Basic SKU</text>
+  <text x="1070" y="393" text-anchor="middle" font-size="9" fill="#888">Container images</text>
+
+  <!-- Web App to SQL/ACR arrows -->
+  <path d="M 305 390 Q 600 430 905 417" stroke="#0078D4" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)"/>
+  <path d="M 305 405 Q 650 450 1070 417" stroke="#0078D4" stroke-width="1" fill="none" marker-end="url(#arrowBlue)" opacity="0.5"/>
+
+  <!-- Storage row -->
+  <rect x="75" y="432" width="230" height="65" rx="8" fill="#fff" stroke="#0078D4" filter="url(#shadowLight)"/>
+  <text x="190" y="457" text-anchor="middle" font-size="12" font-weight="700" fill="#333">Azure Files</text>
+  <text x="190" y="472" text-anchor="middle" font-size="10" fill="#555">100GB Standard SSD</text>
+  <text x="190" y="485" text-anchor="middle" font-size="9" fill="#888">Ollama model persistence (~/.ollama)</text>
+
+  <rect x="325" y="432" width="230" height="65" rx="8" fill="#fff" stroke="#0078D4" filter="url(#shadowLight)"/>
+  <text x="440" y="457" text-anchor="middle" font-size="12" font-weight="700" fill="#333">Blob Storage</text>
+  <text x="440" y="472" text-anchor="middle" font-size="10" fill="#555">Standard LRS</text>
+  <text x="440" y="485" text-anchor="middle" font-size="9" fill="#888">Public RAG documents for embedding</text>
+
+  <!-- Ollama to Files arrow -->
+  <path d="M 440 417 L 190 432" stroke="#0078D4" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)"/>
+  <!-- RAG to Blob arrow -->
+  <path d="M 690 417 L 440 432" stroke="#0078D4" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)"/>
+
+  <!-- Email service (commented/disabled) -->
+  <rect x="575" y="432" width="230" height="65" rx="8" fill="#fff" stroke="#ccc" filter="url(#shadowLight)" opacity="0.6"/>
+  <text x="690" y="457" text-anchor="middle" font-size="12" font-weight="700" fill="#999">Azure Comm. Services</text>
+  <text x="690" y="472" text-anchor="middle" font-size="10" fill="#bbb">Email — not yet provisioned</text>
+  <text x="690" y="485" text-anchor="middle" font-size="9" fill="#ccc">Contact &amp; booking notifications</text>
+  <text x="580" y="440" font-size="10" font-weight="700" fill="#e00">✕ Disabled</text>
+
+  <!-- ============================================================ -->
+  <!-- Internal arrow -->
+  <!-- ============================================================ -->
+  <line x1="600" y1="685" x2="600" y2="710" stroke="#103050" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 3: AZURE INTERNAL -->
+  <!-- ============================================================ -->
+  <rect x="30" y="715" width="1140" height="360" rx="12" fill="url(#azIntGrad)" opacity="0.06"/>
+  <rect x="30" y="715" width="1140" height="360" rx="12" fill="none" stroke="#103050" stroke-width="2"/>
+  <text x="50" y="738" font-size="14" font-weight="700" fill="#103050">☁  AZURE — Internal VNet-Isolated Infrastructure (Company Data)</text>
+
+  <!-- VNet box -->
+  <rect x="55" y="750" width="790" height="310" rx="10" fill="#103050" fill-opacity="0.04" stroke="#103050" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="75" y="770" font-size="12" font-weight="600" fill="#103050">Azure Virtual Network — 10.1.0.0/16</text>
+
+  <!-- Internal ACA -->
+  <rect x="75" y="782" width="480" height="130" rx="8" fill="#103050" fill-opacity="0.06" stroke="#103050" stroke-width="1"/>
+  <text x="90" y="800" font-size="11" font-weight="600" fill="#103050">ACA Environment (VNet-injected, Consumption)</text>
+
+  <rect x="90" y="812" width="210" height="85" rx="7" fill="#fff" stroke="#103050" filter="url(#shadowLight)"/>
+  <text x="195" y="837" text-anchor="middle" font-size="12" font-weight="700" fill="#333">Internal RAG App</text>
+  <text x="195" y="855" text-anchor="middle" font-size="10" fill="#555">Company data query interface</text>
+  <text x="195" y="870" text-anchor="middle" font-size="9" fill="#888">Accessed via VPN only</text>
+
+  <rect x="320" y="812" width="210" height="85" rx="7" fill="#fff" stroke="#103050" filter="url(#shadowLight)"/>
+  <text x="425" y="837" text-anchor="middle" font-size="12" font-weight="700" fill="#333">Ollama (Private)</text>
+  <text x="425" y="855" text-anchor="middle" font-size="10" fill="#555">Company context inference</text>
+  <text x="425" y="870" text-anchor="middle" font-size="9" fill="#888">Private model + embeddings</text>
+
+  <!-- Internal Storage -->
+  <rect x="580" y="782" width="250" height="130" rx="8" fill="#103050" fill-opacity="0.06" stroke="#103050" stroke-width="1"/>
+  <text x="595" y="800" font-size="11" font-weight="600" fill="#103050">Storage Account (Private)</text>
+
+  <rect x="595" y="812" width="220" height="40" rx="6" fill="#fff" stroke="#103050" filter="url(#shadowLight)"/>
+  <text x="705" y="830" text-anchor="middle" font-size="11" font-weight="600" fill="#333">Azure Files — Internal docs</text>
+  <text x="705" y="845" text-anchor="middle" font-size="9" fill="#888">Mounted to RAG container</text>
+
+  <rect x="595" y="860" width="220" height="40" rx="6" fill="#fff" stroke="#103050" filter="url(#shadowLight)"/>
+  <text x="705" y="878" text-anchor="middle" font-size="11" font-weight="600" fill="#333">Blob — Embeddings</text>
+  <text x="705" y="893" text-anchor="middle" font-size="9" fill="#888">Vector store for company data</text>
+
+  <!-- Private Endpoints -->
+  <rect x="580" y="740" width="100" height="22" rx="4" fill="#2EA043" opacity="0.85"/>
+  <text x="630" y="756" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">🔒 Private Endpoints</text>
+
+  <!-- Internal arrows -->
+  <path d="M 300 855 L 320 855" stroke="#103050" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+  <path d="M 530 855 L 595 855" stroke="#103050" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- VPN Gateway row -->
+  <rect x="75" y="930" width="480" height="110" rx="8" fill="#103050" fill-opacity="0.06" stroke="#103050" stroke-width="1"/>
+  <text x="90" y="948" font-size="11" font-weight="600" fill="#103050">Azure VPN Gateway — Point-to-Site</text>
+
+  <rect x="90" y="960" width="140" height="65" rx="7" fill="#fff" stroke="#103050" filter="url(#shadowLight)"/>
+  <text x="160" y="986" text-anchor="middle" font-size="11" font-weight="700" fill="#333">VPN Gateway</text>
+  <text x="160" y="1003" text-anchor="middle" font-size="9" fill="#555">VpnGw1</text>
+
+  <path d="M 230 992 L 280 992" stroke="#2EA043" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <rect x="290" y="960" width="140" height="65" rx="7" fill="#e6ffe6" stroke="#2EA043" filter="url(#shadowLight)"/>
+  <text x="360" y="986" text-anchor="middle" font-size="11" font-weight="700" fill="#2EA043">👤 Staff Laptops</text>
+  <text x="360" y="1003" text-anchor="middle" font-size="9" fill="#555">OpenVPN / IKEv2</text>
+
+  <!-- VPN to ACA arrow -->
+  <line x1="315" y1="930" x2="315" y2="897" stroke="#103050" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowBlue)"/>
+
+  <!-- ============================================================ -->
+  <!-- OPTION BOX: Cloudflare Zero Trust Alternative -->
+  <!-- ============================================================ -->
+  <rect x="870" y="755" width="285" height="300" rx="10" fill="#F5F0E8" stroke="#F38020" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="1012" y="778" text-anchor="middle" font-size="12" font-weight="700" fill="#F38020">🌟  Alternative Option</text>
+  <text x="1012" y="798" text-anchor="middle" font-size="12" font-weight="700" fill="#F38020">Cloudflare Zero Trust</text>
+
+  <text x="885" y="822" font-size="10" fill="#333" font-weight="600">Instead of Azure VPN Gateway:</text>
+  <text x="885" y="842" font-size="10" fill="#555">• Deploy cloudflared tunnel in ACA</text>
+  <text x="885" y="860" font-size="10" fill="#555">• No VPN client needed</text>
+  <text x="885" y="878" font-size="10" fill="#555">• SSO auth via Cloudflare Access</text>
+  <text x="885" y="896" font-size="10" fill="#555">• ~$7/user/mo vs ~$30/mo gateway</text>
+
+  <line x1="885" y1="910" x2="1140" y2="910" stroke="#ccc" stroke-width="1"/>
+
+  <text x="885" y="930" font-size="10" fill="#333" font-weight="600">Pros:</text>
+  <text x="885" y="948" font-size="10" fill="#555">✓ No Azure VPN gateway cost</text>
+  <text x="885" y="964" font-size="10" fill="#555">✓ No VPN client management</text>
+  <text x="885" y="980" font-size="10" fill="#555">✓ Browser-based SSO</text>
+  <text x="885" y="996" font-size="10" fill="#555">✓ Same Cloudflare dashboard</text>
+
+  <text x="885" y="1016" font-size="10" fill="#333" font-weight="600">Cons:</text>
+  <text x="885" y="1034" font-size="10" fill="#555">✗ Per-user cost ($7/user)</text>
+  <text x="885" y="1050" font-size="10" fill="#555">✗ Traffic routes via Cloudflare</text>
+
+  <!-- ============================================================ -->
+  <!-- LEGEND -->
+  <!-- ============================================================ -->
+  <rect x="30" y="1085" width="1140" height="40" rx="6" fill="#f8f9fa" stroke="#ddd"/>
+  <text x="50" y="1110" font-size="10" fill="#666">
+    <tspan font-weight="700" fill="#F38020">■</tspan> Cloudflare
+    <tspan font-weight="700" fill="#0078D4">■</tspan> Azure Public
+    <tspan font-weight="700" fill="#103050">■</tspan> Azure Internal
+    <tspan font-weight="700" fill="#2EA043">■</tspan> VPN / Staff Access
+    <tspan font-weight="700" fill="#ccc">■</tspan> Not yet provisioned
+  </text>
+  <text x="50" y="1125" font-size="9" fill="#999">Region: US East — Cost: ~$270–300/mo (excl. email) — Cloudflare Free Plan</text>
+  <text x="1050" y="1110" font-size="9" fill="#999">Generated: June 2026</text>
+</svg>

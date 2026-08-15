@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "scb-api-gateway",
+  "main": "api-gateway-worker.js",
+  "compatibility_date": "2026-07-02",
+  "ai": { "binding": "AI" },
+  "send_email": [{ "name": "EMAIL" }],
+  "d1_databases": [{
+    "binding": "BOOKINGS_DB",
+    "database_name": "scb-bookings",
+    "database_id": "5fdf7cd7-801c-49ab-aa15-f6f2dc691199"
+  }],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
+}

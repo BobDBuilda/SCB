@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supreme Counselling — Infrastructure Proposal</title>
+<style>
+  @page {
+    size: A4;
+    margin: 1.5cm 1.8cm;
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 9px;
+      color: #999;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #333;
+    background: #fff;
+  }
+
+  .page { margin-bottom: 2em; }
+
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+    page-break-after: always;
+  }
+  .cover h1 { font-size: 28px; color: #1a1a2e; margin-bottom: 8px; }
+  .cover .subtitle { font-size: 16px; color: #0078D4; margin-bottom: 24px; }
+  .cover .meta { font-size: 12px; color: #888; }
+  .cover .badge {
+    display: inline-block; margin: 4px 6px; padding: 4px 14px;
+    border-radius: 20px; font-size: 11px; font-weight: 600; color: #fff;
+  }
+  .badge-cf { background: #F38020; }
+  .badge-az { background: #0078D4; }
+  .badge-vpn { background: #2EA043; }
+
+  .option-card { display: inline-block; width: 220px; padding: 16px; margin: 8px; border-radius: 12px; text-align: center; vertical-align: top; }
+  .option-card h3 { font-size: 15px; margin-bottom: 4px; }
+  .option-card .price { font-size: 20px; font-weight: 700; margin: 6px 0; }
+  .option-card .price-label { font-size: 10px; color: #666; }
+
+  h2 { font-size: 18px; color: #1a1a2e; border-bottom: 3px solid #0078D4; padding-bottom: 4px; margin-top: 1.5em; margin-bottom: 0.8em; }
+  h3 { font-size: 14px; color: #0078D4; margin-top: 1.2em; margin-bottom: 0.5em; }
+  h4 { font-size: 12px; color: #333; margin-top: 0.8em; margin-bottom: 0.3em; }
+
+  p { margin-bottom: 0.6em; }
+
+  table { width: 100%; border-collapse: collapse; margin: 0.8em 0 1.2em; font-size: 10px; }
+  th, td { padding: 6px 10px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+  th { background: #f0f4f8; font-weight: 600; color: #1a1a2e; }
+  .total-row td { font-weight: 700; background: #e8f0fe; border-top: 2px solid #0078D4; }
+
+  .box { padding: 12px 16px; border-radius: 8px; margin: 0.8em 0; font-size: 10px; }
+  .box-blue { background: #e8f4fd; border-left: 4px solid #0078D4; }
+  .box-orange { background: #fef3e7; border-left: 4px solid #F38020; }
+  .box-green { background: #e6f7e6; border-left: 4px solid #2EA043; }
+  .box-gray { background: #f8f9fa; border-left: 4px solid #888; }
+
+  .two-col { display: flex; gap: 20px; margin: 0.8em 0; }
+  .two-col > div { flex: 1; }
+
+  ul, ol { margin: 0.4em 0 0.8em 1.5em; }
+  li { margin-bottom: 0.3em; }
+  strong { color: #1a1a2e; }
+  hr { border: none; border-top: 1px solid #e0e0e0; margin: 1em 0; }
+  .page-break { page-break-before: always; }
+
+  .cost-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  .cost-table th:last-child { text-align: right; }
+
+  .arch-img { text-align: center; margin: 1em 0; }
+  .arch-img img { max-width: 100%; height: auto; }
+  .arch-img .caption { font-size: 9px; color: #888; margin-top: 4px; }
+
+  .badge-pros { display: inline-block; background: #e6f7e6; color: #2EA043; padding: 1px 8px; border-radius: 4px; font-size: 9px; font-weight: 600; }
+  .badge-cons { display: inline-block; background: #fde8e8; color: #d00; padding: 1px 8px; border-radius: 4px; font-size: 9px; font-weight: 600; }
+
+  .footer { margin-top: 2em; padding-top: 0.8em; border-top: 1px solid #ddd; font-size: 9px; color: #999; text-align: center; }
+
+  .comparison th { text-align: center; }
+  .comparison td { text-align: center; }
+  .comparison td:first-child { text-align: left; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Supreme Counselling<br>for Personal Development</h1>
+  <p class="subtitle">Azure Cloud Infrastructure Proposal</p>
+  <p style="margin: 1.5em 0; color: #555;">
+    <span class="badge badge-cf">Cloudflare Edge</span>
+    <span class="badge badge-az">Azure (Public)</span>
+    <span class="badge badge-az">Azure (Internal)</span>
+  </p>
+  <p class="meta">Prepared: June 2026 &bull; Region: US East</p>
+  <p class="meta">Estimated cost: ~BBD $140–240/mo &bull; Staff access: choose VPN or Cloudflare Zero Trust</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 1. EXECUTIVE SUMMARY -->
+<!-- ================================================================ -->
+<div class="page">
+<h2>1. Executive Summary</h2>
+
+<p>
+This proposal details an Azure-hosted infrastructure for <strong>Supreme Counselling for Personal Development</strong> serving two user groups:
+</p>
+
+<ul>
+  <li><strong>Public clients</strong> — website, booking appointments, AI chat assistant</li>
+  <li><strong>Internal staff (&lt;20)</strong> — private RAG system querying company data</li>
+</ul>
+
+<p>
+The architecture uses <strong>Azure Container Apps</strong> (pay-per-second consumption plan) fronted by <strong>Cloudflare</strong> for DNS, WAF, SSL, and rate limiting. Public and internal data are kept in separate storage — no shared databases, no complex RBAC.
+</p>
+
+<p>
+The estimated monthly cost is <strong>~BBD $140–240</strong> depending on usage, with the primary variable being AI inference load. Staff access to the internal system has <strong>two options</strong> presented in Section 7 for your decision.
+</p>
+
+<div class="box box-blue">
+  <strong>Design principles:</strong>
+  Separation of concerns &bull; Data sovereignty &bull; Minimal overhead &bull; Pay-per-use scaling &bull; No over-engineering
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 2. ARCHITECTURE OVERVIEW -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<h2>2. Architecture Overview</h2>
+
+<div class="arch-img">
+  <img src="architecture.svg" alt="Architecture Diagram" style="max-width:100%;" />
+  <div class="caption">Figure 1: Full infrastructure — Cloudflare → Azure Public → Azure Internal (VNet)</div>
+</div>
+
+<h3>Layer 1 — Cloudflare (Edge) — Free Plan</h3>
+<ul>
+  <li><strong>DNS</strong> — proxied record resolution</li>
+  <li><strong>WAF</strong> — OWASP rules, SQLi &amp; XSS protection</li>
+  <li><strong>SSL/TLS</strong> — Full (Strict) end-to-end encryption</li>
+  <li><strong>Rate Limiting</strong> — per-device JWT cookie, 10 req/min on form endpoints</li>
+  <li>All public traffic routes through Cloudflare before reaching Azure</li>
+</ul>
+
+<h3>Layer 2 — Azure Public (no VNet)</h3>
+<ul>
+  <li><strong>ACA Environment (Consumption)</strong> — container orchestration, no VNet needed</li>
+  <li><strong>Container App — Web SPA + API</strong> — Node.js serving frontend and /api/contact, /api/booking</li>
+  <li><strong>Container App — Ollama</strong> — CPU-based chat inference and document embeddings</li>
+  <li><strong>Container App — RAG API</strong> — public document ingestion and vector retrieval</li>
+  <li><strong>Azure SQL Database (Serverless)</strong> — booking records (name, email, phone, date, time)</li>
+  <li><strong>Azure Files</strong> — Ollama model persistence (~/.ollama)</li>
+  <li><strong>Blob Storage</strong> — public RAG documents for embedding</li>
+  <li><strong>Azure Container Registry</strong> — Docker image storage</li>
+  <li><strong>Azure Communication Services</strong> — email notifications (provisioned separately)</li>
+</ul>
+
+<h3>Layer 3 — Azure Internal (VNet-Isolated)</h3>
+<ul>
+  <li><strong>Azure Virtual Network</strong> (10.1.0.0/16) — fully isolated</li>
+  <li><strong>ACA Environment (VNet-injected)</strong> — containers inside the VNet</li>
+  <li><strong>Container App — Internal RAG</strong> — company data query interface</li>
+  <li><strong>Container App — Ollama (Private)</strong> — private inference on company data</li>
+  <li><strong>Storage Account (Private Endpoints)</strong> — internal company docs + embeddings, traffic never leaves VNet</li>
+  <li><strong>Staff access</strong> — see Section 7 for your two options</li>
+</ul>
+
+<!-- ================================================================ -->
+<!-- 3. COMPONENT BREAKDOWN -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<h2>3. Component Breakdown</h2>
+
+<h3>3.1 Cloudflare (Free Plan)</h3>
+<table>
+  <tr><th>Service</th><th>Purpose</th></tr>
+  <tr><td>DNS</td><td>Domain resolution, proxied records</td></tr>
+  <tr><td>WAF</td><td>OWASP Top 10 rules, custom rate limiting</td></tr>
+  <tr><td>SSL/TLS</td><td>Full Strict encryption, automatic cert management</td></tr>
+  <tr><td>Rate Limiting</td><td>10 requests/min per device (JWT cookie) on API endpoints</td></tr>
+</table>
+
+<h3>3.2 Azure Public</h3>
+<table>
+  <tr><th>Resource</th><th>SKU / Config</th><th>Purpose</th></tr>
+  <tr><td>ACA Environment</td><td>Consumption (no VNet)</td><td>Free container orchestration layer</td></tr>
+  <tr><td>Container App — Web</td><td>Consumption, 0.25 CPU</td><td>Node.js SPA + API</td></tr>
+  <tr><td>Container App — Ollama</td><td>Consumption, 1.0 CPU</td><td>Chat + embeddings</td></tr>
+  <tr><td>Container App — RAG API</td><td>Consumption, 0.5 CPU</td><td>Public document retrieval</td></tr>
+  <tr><td>Azure SQL Database</td><td>Serverless, GP_S_Gen5_1, auto-pause 60min</td><td>Bookings</td></tr>
+  <tr><td>Azure Files</td><td>100GB Standard SSD</td><td>Ollama model storage</td></tr>
+  <tr><td>Blob Storage</td><td>Standard LRS</td><td>RAG documents</td></tr>
+  <tr><td>Container Registry</td><td>Basic SKU</td><td>Container images</td></tr>
+  <tr><td>Log Analytics</td><td>Per-GB</td><td>Monitoring &amp; logs</td></tr>
+  <tr><td>Comm. Services</td><td>Free tier (placeholder)</td><td>Email notifications</td></tr>
+</table>
+
+<h3>3.3 Azure Internal</h3>
+<table>
+  <tr><th>Resource</th><th>SKU / Config</th><th>Purpose</th></tr>
+  <tr><td>Virtual Network</td><td>10.1.0.0/16</td><td>Isolated network</td></tr>
+  <tr><td>ACA Environment</td><td>VNet-injected</td><td>Containers inside VNet</td></tr>
+  <tr><td>Container App — Internal RAG</td><td>Consumption, 0.5 CPU</td><td>Company data queries</td></tr>
+  <tr><td>Container App — Priv. Ollama</td><td>Consumption, 0.5 CPU</td><td>Private inference</td></tr>
+  <tr><td>Storage Account</td><td>Standard LRS + Private Endpoints</td><td>Internal docs + embeddings</td></tr>
+  <tr><td>Azure Files (Int.)</td><td>100GB Standard SSD</td><td>Company documents</td></tr>
+</table>
+
+<!-- ================================================================ -->
+<!-- 4. COST ESTIMATES -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<h2>4. Cost Estimates</h2>
+<p>All prices in <strong>Barbadian Dollars (BBD)</strong> at the pegged rate: 1 USD = 2 BBD. Based on US East pricing.</p>
+
+<table class="cost-table">
+  <tr><th>Resource</th><th>SKU / Detail</th><th>BBD/mo</th></tr>
+  <tr><td>ACA — Web App</td><td>Consumption, 0.25 CPU</td><td>~$30</td></tr>
+  <tr><td>ACA — Ollama (Public)</td><td>Consumption, 1.0 CPU</td><td>~$60</td></tr>
+  <tr><td>ACA — RAG Embedding API</td><td>Consumption, 0.5 CPU</td><td>~$30</td></tr>
+  <tr><td>ACA Env (Public)</td><td>Consumption plan</td><td>$0</td></tr>
+  <tr><td>ACA Env (Internal)</td><td>Consumption + VNet injection</td><td>~$20</td></tr>
+  <tr><td>ACA — Internal RAG + Ollama</td><td>Consumption, 0.5 CPU × 2</td><td>~$60</td></tr>
+  <tr><td>Azure SQL Database</td><td>Serverless, 1 vCore, auto-pause</td><td>~$20–60</td></tr>
+  <tr><td>Azure Files (Ollama)</td><td>100GB Standard SSD</td><td>~$24</td></tr>
+  <tr><td>Azure Files (Internal)</td><td>100GB Standard SSD</td><td>~$24</td></tr>
+  <tr><td>Blob Storage (Public)</td><td>Standard LRS, 10GB</td><td>~$2</td></tr>
+  <tr><td>Blob Storage (Internal)</td><td>Standard LRS, 50GB</td><td>~$6</td></tr>
+  <tr><td>Container Registry</td><td>Basic SKU</td><td>~$10</td></tr>
+  <tr><td>Log Analytics</td><td>Per-GB ingestion</td><td>~$10–30</td></tr>
+  <tr><td>Azure Comm. Services</td><td>Free tier (1k emails/mo)</td><td>$0</td></tr>
+  <tr><td>Cloudflare</td><td>Free plan</td><td>$0</td></tr>
+  <tr class="total-row"><td><strong>Subtotal (infrastructure)</strong></td><td></td><td><strong>~$100–160</strong></td></tr>
+  <tr><td>Staff access</td><td>Your choice below</td><td>+ $0 or + $60</td></tr>
+  <tr class="total-row"><td><strong>Total</strong></td><td></td><td><strong>~$100–220</strong></td></tr>
+</table>
+
+<div class="box box-orange">
+  <strong>Real-world note:</strong> ACA containers scale to zero when idle. For a small practice with a few dozen visits per day, actual container costs are often <strong>50–70% lower</strong> than the table above — the values shown assume several hours of active use daily. Azure SQL auto-pauses after 60 minutes idle, keeping its cost near zero during off-hours. The realistic monthly bill is likely <strong>~BBD $140–180</strong> plus the access option.
+</div>
+
+<!-- ================================================================ -->
+<!-- 5. SECURITY & COMPLIANCE -->
+<!-- ================================================================ -->
+<h2>5. Security &amp; Compliance</h2>
+
+<div class="two-col">
+<div>
+<h3>Perimeter Security</h3>
+<ul>
+  <li>All public traffic passes through Cloudflare — DDoS, WAF, SSL</li>
+  <li>ACA ingress locked to Cloudflare IP ranges</li>
+  <li>No public IP for internal resources</li>
+</ul>
+
+<h3>Data Sovereignty</h3>
+<ul>
+  <li>Public and internal data in separate storage</li>
+  <li>No shared database — no RBAC middleware needed</li>
+  <li>Internal storage via Private Endpoints — traffic stays in VNet</li>
+  <li>Data in US East region</li>
+</ul>
+</div>
+<div>
+<h3>Identity &amp; Access</h3>
+<ul>
+  <li>Public: JWT cookie for rate limiting (no auth)</li>
+  <li>ACA uses managed identity — no connection strings in code</li>
+  <li>Secrets stored as ACA secret references</li>
+  <li>Internal: VPN or Cloudflare Zero Trust (your choice)</li>
+</ul>
+
+<h3>Compliance</h3>
+<ul>
+  <li>Azure: SOC 2, ISO 27001, HIPAA aligned</li>
+  <li>Cloudflare: SOC 2, ISO 27001, PCI DSS</li>
+  <li>Option to deploy West Europe for GDPR</li>
+</ul>
+</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 6. SCALING PATH -->
+<!-- ================================================================ -->
+<h2>6. Scaling Path</h2>
+<table>
+  <tr><th>Scenario</th><th>Action</th><th>Cost Impact</th></tr>
+  <tr><td>Traffic increases</td><td>Increase ACA max replicas (3 → 10)</td><td>Scales per request, auto-scales down</td></tr>
+  <tr><td>More staff</td><td>Adjust VPN gateway or add Zero Trust users</td><td>Minimal</td></tr>
+  <tr><td>More data</td><td>SQL auto-scales; upgrade to Provisioned</td><td>~2× if always active</td></tr>
+  <tr><td>Heavy AI usage</td><td>Dedicated CPU profile or GPU VM (NCas T4)</td><td>+$60–700/mo</td></tr>
+  <tr><td>Need Kubernetes</td><td>Migrate ACA → AKS (same containers)</td><td>+$75–150/mo</td></tr>
+</table>
+
+<div class="box box-blue">
+  No code changes needed to scale — ACA abstracts the orchestration. Same containers deploy to AKS if you ever outgrow ACA.
+</div>
+
+<!-- ================================================================ -->
+<!-- 7. STAFF ACCESS: TWO OPTIONS -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<h2>7. Staff Access to Internal System — Two Options</h2>
+
+<p>
+Both options give your staff secure access to the internal RAG system. The difference is <strong>how they connect and how much it costs</strong>.
+</p>
+
+<div class="two-col">
+<div>
+<h3 style="color:#0078D4;">Option A: Azure P2S VPN</h3>
+<div class="box box-blue">
+  <p><strong>Cost:</strong> BBD $60/mo (fixed)<br>
+  <strong>Setup:</strong> Staff install VPN client<br>
+  <strong>Auth:</strong> Certificate or Azure AD</p>
+</div>
+
+<table class="comparison">
+  <tr><th style="text-align:left;">Aspect</th><th>Detail</th></tr>
+  <tr><td>Type</td><td>Point-to-Site VPN (OpenVPN / IKEv2)</td></tr>
+  <tr><td>Access level</td><td>Full network (L3) — any resource in the VNet</td></tr>
+  <tr><td>Client needed</td><td>Yes — Azure VPN Client app</td></tr>
+  <tr><td>Always-on cost</td><td>BBD $60/mo regardless of usage</td></tr>
+  <tr><td>Pros</td><td><span class="badge-pros">Full network access</span><br><span class="badge-pros">No per-user fees</span><br><span class="badge-pros">Traffic stays on Azure backbone</span></td></tr>
+  <tr><td>Cons</td><td><span class="badge-cons">Client install &amp; management</span><br><span class="badge-cons">Fixed cost even when idle</span><br><span class="badge-cons">Certificate rotation overhead</span></td></tr>
+</table>
+</div>
+
+<div>
+<h3 style="color:#F38020;">Option B: Cloudflare Zero Trust</h3>
+<div class="box box-orange">
+  <p><strong>Cost:</strong> BBD $0/mo (Free for up to 50 users)<br>
+  <strong>Setup:</strong> Browser-based, no client<br>
+  <strong>Auth:</strong> SSO (Google, Microsoft, etc.)</p>
+</div>
+
+<table class="comparison">
+  <tr><th style="text-align:left;">Aspect</th><th>Detail</th></tr>
+  <tr><td>Type</td><td>Cloudflare Tunnel + Access (application-layer)</td></tr>
+  <tr><td>Access level</td><td>App-level (browser) — specific URLs only</td></tr>
+  <tr><td>Client needed</td><td>No — any browser</td></tr>
+  <tr><td>Always-on cost</td><td>$0 on Free plan (up to 50 users)</td></tr>
+  <tr><td>Pros</td><td><span class="badge-pros">No client to manage</span><br><span class="badge-pros">Browser SSO — staff just log in</span><br><span class="badge-pros">Free for your team size</span><br><span class="badge-pros">Same Cloudflare dashboard as rest of stack</span><br><span class="badge-pros">Built-in audit logs</span></td></tr>
+  <tr><td>Cons</td><td><span class="badge-cons">App-level access only (not full network)</span><br><span class="badge-cons">Traffic routes through Cloudflare edge</span><br><span class="badge-cons">Requires cloudflared sidecar container</span></td></tr>
+</table>
+</div>
+</div>
+
+<div class="box box-green">
+  <strong>Recommendation:</strong> For a team of &lt;20, <strong>Cloudflare Zero Trust</strong> is the practical choice — it's free, staff access the internal RAG from any browser with their Google/Microsoft login, no VPN client needed. The only reason to pick the Azure VPN Gateway is if you need full network-level access to the VNet (e.g., staff need to SSH into specific resources, not just hit a web app). The Azure VPN can always be added later if needs change — a simple <code>enable_vpn_gateway = true</code> toggle in the OpenTofu config.
+</div>
+
+<!-- ================================================================ -->
+<!-- 8. WHAT WE'LL BUILD -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<h2>8. What's Included in the OpenTofu Plan</h2>
+
+<table>
+  <tr><th>Module</th><th>Resources</th><th>Conditional?</th></tr>
+  <tr><td>Cloudflare</td><td>DNS records, WAF rules, rate limiting rule set</td><td>Always</td></tr>
+  <tr><td>Azure Public</td><td>RG, ACA env, 3 container apps, SQL DB, storage, ACR, Log Analytics</td><td>Always</td></tr>
+  <tr><td>Azure Internal</td><td>RG, VNet, ACA env (VNet-injected), 2 container apps, storage + private endpoints</td><td>Always</td></tr>
+  <tr><td>VPN Gateway</td><td>VPN gateway, local gateway, connection config</td><td>Toggle (<code>enable_vpn</code>)</td></tr>
+  <tr><td>Cloudflare Zero Trust</td><td>Tunnel, access application, service token</td><td>Toggle (<code>enable_zt</code>)</td></tr>
+  <tr><td>Comm. Services</td><td>Azure Communication Service resource (placeholder)</td><td>You provision email key manually</td></tr>
+</table>
+
+<div class="box box-gray">
+  <strong>Next steps:</strong> Review and pick your staff access option. I'll then finalise the OpenTofu code with the correct toggle, and you can apply it directly to your Azure subscription.
+</div>
+
+<hr>
+
+<h3>Appendix: Why Not Over-Engineer?</h3>
+<ul>
+  <li><strong>No AKS</strong> — ACA provides containers without control plane management</li>
+  <li><strong>No Azure API Management</strong> — the web app routes its own API; rate limiting at Cloudflare</li>
+  <li><strong>No shared database</strong> — public and internal data physically separated, no RBAC middleware</li>
+  <li><strong>No device auth service</strong> — JWT cookies for rate limiting need no database</li>
+</ul>
+
+<div class="footer">
+  Supreme Counselling for Personal Development &bull; Infrastructure Proposal &bull; June 2026 &bull; Confidential
+</div>
+
+</body>
+</html>
