@@ -2,8 +2,7 @@ import { IComponent } from '../Interfaces/IComponent.js';
 import { TemplateEngine } from '../Components/TemplateEngine.js';
 import { Navbar } from '../Components/Navbar.js';
 import { EmailForm } from '../Components/EmailForm.js';
-import { PrivacyNotice } from '../Components/PrivacyNotice.js';
-import { Map } from '../Components/Map.js';
+import { Footer } from '../Components/Footer.js';
 import '../Styles/Pages.css';
 
 class Contact extends IComponent {
@@ -19,15 +18,15 @@ class Contact extends IComponent {
                             
                             <div class="contact-method">
                                 <strong>Address</strong>
-                                <span>123 Healing Way, Bridgetown, Barbados</span>
+                                <span>#5 1st Avenue, Belleville, St. Michael, Barbados</span>
                             </div>
                             <div class="contact-method">
                                 <strong>Phone</strong>
-                                <span>+1 (246) 555-0123</span>
+                                <span>(246) 538-9769 / (246) 836-5601</span>
                             </div>
                             <div class="contact-method">
                                 <strong>Email</strong>
-                                <span>info@supremecounselling.com</span>
+                                <span>secretary@supremecounsellingbb.com</span>
                             </div>
                         </div>
 
@@ -36,7 +35,6 @@ class Contact extends IComponent {
                         </div>
                     </section>
 
-                    <section data-ref="map-container" class="map-section"></section>
                 </main>
                 <footer data-ref="footer"></footer>
             </div>
@@ -48,13 +46,15 @@ class Contact extends IComponent {
             name: 'text',
             email: 'email',
             subject: 'text',
-            message: 'textarea'
+            message: 'textarea',
+            endpoint: '/api/contact',
+            submitText: 'Send Message',
+            successText: 'Thank you! We received your message.'
         });
 
         refs.header.appendChild(new Navbar().render());
         refs['form-container'].appendChild(contactForm.render());
-        refs['map-container'].appendChild(new Map().render());
-        refs.footer.appendChild(new PrivacyNotice().render());
+        refs.footer.appendChild(new Footer().render());
 
         return layout;
     }

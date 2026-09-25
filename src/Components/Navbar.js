@@ -14,12 +14,8 @@ class Navbar {
         const html = `
             <div class="navbar">
                 <div data-name="logo-container">
-                    <div style="font-family: 'Lucida Sans', sans-serif; display: flex; align-items: center; line-height: 1; color: #B22222; cursor: pointer;" onclick="location.href='/'">
-                        <span style="font-size: 80px; font-weight: bold; letter-spacing: -5px;">S</span>
-                        <div style="display: flex; flex-direction: column; justify-content: center; margin-left: 2px; height: 70px; text-transform: uppercase; font-family: inherit; font-weight: bold;">
-                            <span style="font-size: 48px; line-height: 0.7; display: flex; align-items: flex-end;">upreme</span>
-                            <span style="font-size: 18px; line-height: 1.3; letter-spacing: 1px;">Counselling</span>
-                        </div>
+                    <div style="display: flex; align-items: center; cursor: pointer;" onclick="location.href='/'">
+                        <img src="/scb.png" alt="Supreme Counselling" style="height: 90px; width: auto;">
                     </div>
                 </div>
                 <div data-name="func-container">

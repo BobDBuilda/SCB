@@ -12,15 +12,13 @@ class Map {
     render() {
         this.root = TemplateEngine.create('<div class="map-container"></div>');
         
-        // Use requestAnimationFrame to ensure the element is in the DOM 
-        // before Leaflet tries to calculate its size.
-        requestAnimationFrame(() => this.mount());
+        setTimeout(() => this.mount(), 100);
         
         return this.root;
     }
 
     mount() {
-        if (this.map) return; // Prevent double initialization
+        if (this.map) return;
 
         this.map = L.map(this.root).setView(this.location, this.zoom);
         
@@ -33,13 +31,13 @@ class Map {
             .bindPopup('Our Location')
             .openPopup();
 
+        setTimeout(() => this.map.invalidateSize(), 200);
         this.initEvents();
     }
 
     initEvents() {
-        this.root.addEventListener('click', () => {
-            console.log("Map clicked");
-            window.open("https://maps.google.com", "_blank", "noopener,noreferrer");
+        this.root.addEventListener('dblclick', () => {
+            window.open("https://www.google.com/maps?q=5+1st+Avenue+Belleville+St+Michael+Barbados", "_blank", "noopener,noreferrer");
         });
     }
 }

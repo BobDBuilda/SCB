@@ -4,10 +4,15 @@ import '../Styles/EmailForm.css';
 class EmailForm {
     constructor(scaffold) {
         this.scaffold = scaffold;
+        this.endpoint = scaffold.endpoint || '/api/contact';
+        this.submitText = scaffold.submitText || 'Send Message';
+        this.successText = scaffold.successText || 'Thank you! Your message has been sent.';
     }
 
     render() {
-        const fieldsHtml = Object.entries(this.scaffold).map(([key, value]) => {
+        const fieldsHtml = Object.entries(this.scaffold)
+            .filter(([key]) => !['endpoint', 'submitText', 'successText'].includes(key))
+            .map(([key, value]) => {
             const labelText = key.replace(/([A-Z])/g, ' $1').trim();
             if (value === "textarea") {
                 return `
@@ -30,7 +35,7 @@ class EmailForm {
             <form class="email-form">
                 ${fieldsHtml}
                 <div data-ref="message" class="form-message"></div>
-                <button type="submit" data-ref="submitBtn">Send Message</button>
+                <button type="submit" data-ref="submitBtn">${this.submitText}</button>
             </form>
         `;
 
@@ -61,7 +66,7 @@ class EmailForm {
         try {
             const success = await this.sendEmail(data);
             if (success) {
-                msg.textContent = "Thank you! Your message has been sent.";
+                msg.textContent = this.successText;
                 msg.classList.add('success');
                 this.root.reset();
             } else {
@@ -78,11 +83,10 @@ class EmailForm {
 
     async sendEmail(data) {
         try {
-            const response = await fetch('http://localhost:8080/send-email', {
+            const response = await fetch(this.endpoint, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
