@@ -1,0 +1,33 @@
+common git commands
+
+git fetch origin                             #get latest branches from github
+git checkout main && git pull origin main    #switch to main, get up to date
+git merge <branch>                           #trigger merge, shows conflict files+markers
+git status                                   #see which files are "both modified"
+git diff                                     #inspect <<< / >>> conflict sides
+git checkout --theirs <file>                 #keep the merged branch's version
+git checkout --ours <file>                   #keep main's version
+npm install                                  #regenerate package-lock.json instead of hand-editing
+git add .                                    #stage resolved files
+git commit                                   #finish the merge(default message is fine)
+git push origin main                         #pushes; github sees conflict resolved
+git remote -v                                #displays the remote branches to push to/fetch from
+
+FOR package-lock.json conflicts: the last 2 are key. If you want to abort and start over: git merge --abort
+
+git log prints the commit history of the current branch(recent first) so you can see the sequence of commmits. Add --oneline for a compact one-per-line list.
+
+
+REMEMBER:
+git merges combine branches(their full histories of commits), and the result is recorded as a MERGE COMMIT
+
+You as a developer PUSH COMMITS to a SINGLE BRANCH.
+
+git only merges cleanly when the 2 branches changed DIFFERENT things; conflicts happen 
+when both branches modified the same lines of the same file since they diverged, so git
+can't tell which version is correct and asks you to decide (that's the <<<<<<< / >>>>>>>
+markers). A commit is just a snapshot of the whole project, so 'merging' means reconciling
+every file both sides touched - most unchanged files merge silently, onyl overlapping 
+edits need your judgement.
+
+
